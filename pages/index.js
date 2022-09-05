@@ -1,11 +1,11 @@
-import React from 'react';
+import { withRouter } from 'next/router';
 import SEO from '../components/seo';
 
-const Home = () => (
-  <React.Fragment>
-    <SEO title='Home' />
+const Home = ({ router }) => (
+  <>
+    <SEO title='Home' pathname={router.pathname} />
     <h1 className='text-3xl font-bold underline'>Hello world!</h1>
-  </React.Fragment>
+  </>
 );
 
-export default Home;
+export default withRouter(Home);
