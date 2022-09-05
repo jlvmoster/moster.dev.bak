@@ -5,7 +5,7 @@ const SEO = ({ title, description, pathname, children }) => {
   const defaultDescription = `A developer's personal blog`;
   const siteUrl = `https://moster.dev`;
   const seo = {
-    title: title ? `${title} | ${defaultTitle}` : defaultTitle,
+    title: title ? `${title} • ${defaultTitle}` : defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}/favicon.ico`,
     url: `${siteUrl}${pathname || ``}`,
