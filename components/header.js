@@ -7,7 +7,7 @@ const links = [
 ];
 
 const Header = ({ pathname }) => (
-  <header>
+  <header className='bg-gray-800'>
     <div className='mx-auto max-w-7xl px-8'>
       <div className='py-6 flex flex-col justify-center items-center border-b border-gray-600 sm:flex-row sm:justify-between sm:border-none'>
         <Link href='/'>
