@@ -1,7 +1,7 @@
-.card {
-  @apply overflow-hidden bg-white shadow-md sm:rounded-lg;
+.container {
+  @apply overflow-hidden bg-gray-500 shadow-md sm:rounded-lg;
 }
 
-.animated {
+.animation {
   @apply transition ease-in-out duration-200 sm:hover:shadow-lg sm:hover:scale-105;
 }
