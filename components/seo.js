@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 const SEO = ({ title, description, pathname, children }) => {
-  const defaultTitle = `Moster<dev>`;
+  const defaultTitle = `Moster<dev/>`;
   const defaultDescription = `A developer's personal blog`;
   const siteUrl = `https://moster.dev`;
   const seo = {
