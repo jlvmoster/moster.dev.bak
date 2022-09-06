@@ -17,8 +17,6 @@ const Home = ({ router }) => (
           <h1 className='text-3xl text-white font-bold tracking-wide sm:text-5xl'>Hi, I&apos;m Jalo &#x1f44b;</h1>
           <p className='mt-3 text-lg text-gray-300 sm:text-2xl'>
             Just a <span className='text-yellow-400'>helluva</span> Software Engineer.
-            <br />
-            &#x1f41d; Go Jackets! &#x1f41d;
           </p>
         </div>
       </section>

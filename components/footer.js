@@ -44,12 +44,21 @@ const Footer = () => (
       </div>
       <div className='mt-4 md:order-1 md:mt-0'>
         <p className='text-center text-base text-gray-400'>
-          &copy; 2022 Moster, Inc. Powered by{' '}
+          &copy; 2022{' '}
+          <a
+            href='https://mosterinc.com'
+            target='_blank'
+            rel='noreferrer'
+            className='transition ease-in-out duration-150 hover:underline hover:text-gray-300'
+          >
+            Moster, Inc.
+          </a>{' '}
+          Powered by{' '}
           <a
             href='https://vercel.com'
             target='_blank'
             rel='noreferrer'
-            className='text-xl font-semibold transition ease-in-out duration-150 hover:underline hover:text-gray-300 hover:font-bold'
+            className='text-xl font-semibold transition ease-in-out duration-150 hover:text-gray-300 hover:font-bold'
           >
             Vercel
           </a>
