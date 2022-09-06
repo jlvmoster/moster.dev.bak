@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    dirs: ['pages', 'components', 'lib'],
+    dirs: ['pages', 'components'],
   },
   reactStrictMode: true,
   swcMinify: true,

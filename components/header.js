@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
+import styles from '../styles/App.module.css';
 
 const links = [
   { name: 'Home', path: '/' },
@@ -7,12 +8,13 @@ const links = [
 ];
 
 const Header = ({ pathname }) => (
-  <header className='bg-gray-800'>
+  <header className={styles.background}>
     <div className='mx-auto max-w-7xl px-8'>
       <div className='py-6 flex flex-col justify-center items-center border-b border-gray-600 sm:flex-row sm:justify-between sm:border-none'>
         <Link href='/'>
-          <a className='text-2xl text-white tracking-wide font-medium'>
-            Moster<span className='text-green-300'>&lt;dev/&gt;</span>
+          <a className='group text-2xl text-white tracking-wide font-medium'>
+            Moster
+            <span className='text-green-400 group-hover:animate-pulse'>&lt;dev/&gt;</span>
           </a>
         </Link>
         <nav className='space-x-4 hidden sm:block'>

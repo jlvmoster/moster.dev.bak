@@ -1,4 +1,6 @@
-const social = [
+import styles from '../styles/App.module.css';
+
+const socials = [
   {
     name: 'Twitter',
     href: 'https://twitter.com/jlvmoster',
@@ -24,24 +26,34 @@ const social = [
 ];
 
 const Footer = () => (
-  <footer className='bg-gray-800'>
-    <div className='mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8'>
-      <div className='flex justify-center space-x-6 md:order-2'>
-        {social.map(item => (
+  <footer className={styles.background}>
+    <div className='max-w-7xl mx-auto p-8 md:flex md:items-center md:justify-between'>
+      <div className='flex justify-center space-x-4 md:order-2'>
+        {socials.map(social => (
           <a
-            key={item.name}
-            className='text-gray-400 hover:text-gray-300'
-            href={item.href}
+            key={social.name}
+            href={social.href}
             rel='noreferrer'
             target='_blank'
+            className='text-gray-400 hover:text-gray-300'
           >
-            <span className='sr-only'>{item.name}</span>
-            <item.icon className='h-6 w-6' aria-hidden='true' />
+            <span className='sr-only'>{social.name}</span>
+            <social.icon className='h-6 w-6' aria-hidden='true' />
           </a>
         ))}
       </div>
-      <div className='mt-8 md:order-1 md:mt-0'>
-        <p className='text-center text-base text-gray-400'>&copy; 2022 Moster, Inc. All rights reserved.</p>
+      <div className='mt-4 md:order-1 md:mt-0'>
+        <p className='text-center text-base text-gray-400'>
+          &copy; 2022 Moster, Inc. Powered by{' '}
+          <a
+            href='https://vercel.com'
+            target='_blank'
+            rel='noreferrer'
+            className='text-xl font-semibold transition ease-in-out duration-150 hover:underline hover:text-gray-300 hover:font-bold'
+          >
+            Vercel
+          </a>
+        </p>
       </div>
     </div>
   </footer>

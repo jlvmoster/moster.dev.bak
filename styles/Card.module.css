@@ -1,7 +1,0 @@
-.container {
-  @apply overflow-hidden bg-gray-500 shadow-md sm:rounded-lg;
-}
-
-.animation {
-  @apply transition ease-in-out duration-200 sm:hover:shadow-lg sm:hover:scale-105;
-}
