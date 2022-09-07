@@ -1,5 +1,10 @@
+import { ThemeProvider } from 'next-themes';
 import '../styles/globals.css';
 
-const App = ({ Component, pageProps }) => <Component {...pageProps} />;
+const App = ({ Component, pageProps }) => (
+  <ThemeProvider attribute='class'>
+    <Component {...pageProps} />
+  </ThemeProvider>
+);
 
 export default App;

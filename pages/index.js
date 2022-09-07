@@ -14,9 +14,12 @@ const Home = ({ router }) => (
           <Image src={profilePic} alt='Picture of the author' layout='fill' priority />
         </div>
         <div className='mt-6 text-center'>
-          <h1 className='text-3xl text-white font-bold tracking-wide sm:text-5xl'>Hi, I&apos;m Jalo &#x1f44b;</h1>
-          <p className='mt-3 text-lg text-gray-300 sm:text-2xl'>
-            Just a <span className='text-yellow-400'>helluva</span> Software Engineer.
+          <h1 className='text-3xl text-gray-900 dark:text-white font-bold tracking-wide sm:text-5xl'>
+            Hi, I&apos;m Jalo &#x1f44b;
+          </h1>
+          <p className='mt-3 text-lg text-gray-500 dark:text-gray-300 tracking-wider sm:text-2xl'>
+            I&apos;m just one <span className='text-yellow-500 dark:text-yellow-400 font-semibold'>helluva</span>{' '}
+            Software Engineer.
           </p>
         </div>
       </section>
