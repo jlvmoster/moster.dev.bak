@@ -17,8 +17,8 @@ const Links = ({ pathname }) =>
         className={clsx(
           'px-3 py-2 rounded-md text-sm font-medium',
           link.path === pathname
-            ? 'bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white'
-            : 'text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
+            ? 'bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white'
+            : 'hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-300 dark:hover:text-white'
         )}
       >
         {link.name}
@@ -61,7 +61,7 @@ const ThemeSwitcher = () => {
         <Listbox.Label className='sr-only'>Theme switcher</Listbox.Label>
         <Listbox.Button
           className={clsx(
-            'inline-flex items-center rounded-full border border-transparent p-1.5',
+            'inline-flex items-center rounded-lg border border-transparent p-1.5',
             'text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white',
             'focus:outline-none'
           )}
@@ -112,7 +112,9 @@ const Header = ({ pathname }) => (
         <Link href='/'>
           <a className='group flex-grow text-2xl text-gray-900 dark:text-white tracking-wide font-medium sm:flex-none'>
             Moster
-            <span className='text-green-600 dark:text-green-400 group-hover:animate-pulse'>&lt;dev/&gt;</span>
+            <span className='text-green-600 dark:text-green-400 transition ease-in-out duration-150 group-hover:text-sky-500'>
+              &lt;dev/&gt;
+            </span>
           </a>
         </Link>
         <nav className='ml-4 flex-grow space-x-4 hidden sm:block'>
