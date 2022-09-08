@@ -19,9 +19,9 @@ const Blog = ({ router, posts, preview }) => (
             </h1>
           </div>
         </section>
-        <section className='px-6 grid gap-4 sm:grid-cols-2'>
+        <section className='px-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3'>
           {posts.map(post => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
+            <Link key={post.fields.slug} href={`/blog/${post.fields.slug}`}>
               <a
                 className={clsx(
                   'flex flex-col overflow-hidden rounded-lg shadow-md dark:shadow-lg dark:bg-gray-900',
@@ -29,11 +29,16 @@ const Blog = ({ router, posts, preview }) => (
                 )}
               >
                 <div className='relative aspect-w-16 aspect-h-9'>
-                  <Image src={post.heroImage.url} layout='fill' alt={post.heroImage.title} priority />
+                  <Image
+                    src={`https:${post.fields.heroImage.fields.file.url}`}
+                    layout='fill'
+                    alt={post.fields.heroImage.fields.title}
+                    priority
+                  />
                 </div>
                 <div className='p-6'>
-                  <h5 className='text-xl font-semibold text-gray-900 dark:text-gray-50'>{post.title}</h5>
-                  <p className='mt-3 text-base text-gray-500 dark:text-white'>{post.excerpt}</p>
+                  <h5 className='text-xl font-semibold text-gray-900 dark:text-gray-50'>{post.fields.title}</h5>
+                  <p className='mt-3 text-base text-gray-500 dark:text-white'>{post.fields.excerpt}</p>
                 </div>
               </a>
             </Link>
@@ -48,6 +53,7 @@ export default withRouter(Blog);
 
 export const getServerSideProps = async ({ query, preview = false }) => {
   const posts = (await getAllBlogPosts(query.page ?? 0, preview)) ?? [];
+
   return {
     props: { posts, preview },
   };
