@@ -11,15 +11,15 @@ const Blog = ({ router, posts, preview }) => (
   <>
     <SEO title='Blog' pathname={router.pathname} />
     <Layout pathname={router.pathname} preview={preview}>
-      <div className='max-w-3xl sm:max-w-5xl lg:max-w-7xl'>
-        <section className='mx-auto py-16 px-3 sm:py-24 sm:px-6'>
+      <div className='max-w-3xl mx-auto sm:max-w-5xl lg:max-w-7xl'>
+        <section className='py-16 px-3 sm:py-24 sm:px-6'>
           <div className='px-3 text-center'>
             <h1 className='text-3xl text-gray-900 dark:text-white font-bold tracking-wide sm:text-5xl'>
               Welcome to my blog!
             </h1>
           </div>
         </section>
-        <section className='mx-auto px-6 grid gap-4 sm:grid-cols-2'>
+        <section className='px-6 grid gap-4 sm:grid-cols-2'>
           {posts.map(post => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <a
