@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { withRouter } from 'next/router';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 
 import { getAllBlogPostSlugs, getBlogPostBySlug } from '../../lib/api';
 import Layout from '../../components/layout';
@@ -17,6 +17,16 @@ const renderOptions = {
       }
       return <p>{children}</p>;
     },
+    [INLINES.HYPERLINK]: ({ data }, children) => (
+      <a
+        href={data.uri}
+        target='_blank'
+        rel='noreferrer'
+        className='text-sky-600 dark:text-sky-500 transition ease-in-out duration-150 no-underline underline-offset-4 hover:underline hover:text-sky-500 dark:hover:text-sky-400'
+      >
+        {children}
+      </a>
+    ),
     [BLOCKS.EMBEDDED_ASSET]: node => (
       <div className='relative mx-auto aspect-w-16 aspect-h-9'>
         <Image src={`https:${node.data.target.fields.file.url}`} layout='fill' alt={node.data.target.fields.title} />
