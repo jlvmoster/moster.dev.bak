@@ -51,9 +51,8 @@ const Blog = ({ router, posts, preview }) => (
 
 export default withRouter(Blog);
 
-export const getServerSideProps = async ({ query, preview = false }) => {
-  const posts = (await getAllBlogPosts(query.page ?? 0, preview)) ?? [];
-
+export const getStaticProps = async ({ preview = false }) => {
+  const posts = (await getAllBlogPosts(preview)) ?? [];
   return {
     props: { posts, preview },
   };
