@@ -12,10 +12,8 @@ const handler = async (req, res) => {
   try {
     const postSlug = req.body.fields.slug['en-US'];
 
-    // revalidate the individual post, blog page, and the home page
+    // revalidate the recently published blog page
     await res.revalidate(`/blog/${postSlug}`);
-    await res.revalidate('/blog');
-    await res.revalidate('/');
 
     return res.json({ revalidated: true });
   } catch (err) {
