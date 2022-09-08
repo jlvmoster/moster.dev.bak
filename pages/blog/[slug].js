@@ -11,6 +11,12 @@ import SEO from '../../components/seo';
 
 const renderOptions = {
   renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => {
+      if (node.content.length === 1 && node.content[0].marks.filter(({ type }) => type === 'code').length > 0) {
+        return <pre>{children}</pre>;
+      }
+      return <p>{children}</p>;
+    },
     [BLOCKS.EMBEDDED_ASSET]: node => (
       <div className='relative mx-auto aspect-w-16 aspect-h-9'>
         <Image src={`https:${node.data.target.fields.file.url}`} layout='fill' alt={node.data.target.fields.title} />
@@ -43,7 +49,7 @@ const BlogPost = ({ router, post, readingTime, preview }) => (
           />
         </div>
         <section className='px-4'>
-          <article className='mx-auto prose dark:prose-invert lg:prose-xl'>
+          <article className='max-w-3xl mx-auto prose dark:prose-invert lg:prose-xl'>
             {documentToReactComponents(post.content, renderOptions)}
           </article>
         </section>
