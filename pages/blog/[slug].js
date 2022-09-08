@@ -17,9 +17,19 @@ const renderOptions = {
       }
       return <p>{children}</p>;
     },
-    [INLINES.HYPERLINK]: ({ data }, children) => (
+    [BLOCKS.TABLE]: (node, children) => (
+      <table className='border-2 border-gray-100 dark:border-gray-900'>
+        <tbody>{children}</tbody>
+      </table>
+    ),
+    [BLOCKS.TABLE_ROW]: (node, children) => (
+      <tr className='border-2 border-gray-100 dark:border-gray-900'>{children}</tr>
+    ),
+    [BLOCKS.TABLE_HEADER_CELL]: (node, children) => <th className='px-6 bg-gray-100 dark:bg-gray-900'>{children}</th>,
+    [BLOCKS.TABLE_CELL]: (node, children) => <td className='px-6'>{children}</td>,
+    [INLINES.HYPERLINK]: (node, children) => (
       <a
-        href={data.uri}
+        href={node.data.uri}
         target='_blank'
         rel='noreferrer'
         className='text-sky-600 dark:text-sky-500 transition ease-in-out duration-150 no-underline underline-offset-4 hover:underline hover:text-sky-500 dark:hover:text-sky-400'
