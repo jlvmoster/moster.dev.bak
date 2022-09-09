@@ -51,7 +51,7 @@ const Footer = () => (
           >
             Moster, Inc.
           </a>{' '}
-          All rights reserved. <br className='block sm:hidden' /> Powered by{' '}
+          All rights reserved. <br className='sm:hidden' /> Powered by{' '}
           <a
             href='https://vercel.com'
             target='_blank'

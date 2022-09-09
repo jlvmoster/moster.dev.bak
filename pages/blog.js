@@ -1,9 +1,11 @@
 import clsx from 'clsx';
+import { format } from 'date-fns';
 import Link from 'next/link';
 import Image from 'next/image';
 import { withRouter } from 'next/router';
 
 import { getAllBlogPosts } from '../lib/api';
+import { getEstimatedReadingTime } from '../lib/utils';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
@@ -14,18 +16,18 @@ const Blog = ({ router, posts, preview }) => (
       <div className='max-w-3xl mx-auto sm:max-w-5xl lg:max-w-7xl'>
         <section className='py-16 px-3 sm:py-24 sm:px-6'>
           <div className='px-3 text-center'>
-            <h1 className='text-3xl text-gray-900 dark:text-white font-bold tracking-wide sm:text-5xl'>
+            <h1 className='text-4xl sm:text-5xl text-gray-900 dark:text-white font-semibold tracking-wider leading-tight'>
               Welcome to my blog!
             </h1>
           </div>
         </section>
-        <section className='px-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3'>
+        <section className='mx-auto mb-24 px-6 grid gap-6 sm:grid-cols-2 sm:max-w-5xl'>
           {posts.map(post => (
             <Link key={post.fields.slug} href={`/blog/${post.fields.slug}`}>
               <a
                 className={clsx(
-                  'flex flex-col overflow-hidden rounded-lg shadow-md dark:shadow-lg dark:bg-gray-900',
-                  'transform ease-in-out duration-150 hover:scale-105'
+                  'flex flex-col overflow-hidden rounded-xl shadow-md dark:bg-gray-900',
+                  'transform ease-in-out duration-150 hover:scale-105 hover:shadow-lg'
                 )}
               >
                 <div className='relative aspect-w-16 aspect-h-9'>
@@ -38,6 +40,9 @@ const Blog = ({ router, posts, preview }) => (
                 </div>
                 <div className='p-6'>
                   <h5 className='text-xl font-semibold text-gray-900 dark:text-gray-50'>{post.fields.title}</h5>
+                  <p className='text-sm text-base'>
+                    {format(new Date(post.fields.publishDate), 'LLL. d, yyyy')} &bull; {post.readingTime} min read
+                  </p>
                   <p className='mt-3 text-base text-gray-500 dark:text-white'>{post.fields.excerpt}</p>
                 </div>
               </a>
@@ -53,7 +58,11 @@ export default withRouter(Blog);
 
 export const getStaticProps = async ({ preview = false }) => {
   const posts = (await getAllBlogPosts(preview)) ?? [];
+  const enrichedPosts = posts.map(post => {
+    post['readingTime'] = getEstimatedReadingTime(post);
+    return post;
+  });
   return {
-    props: { posts, preview },
+    props: { posts: enrichedPosts, preview },
   };
 };
