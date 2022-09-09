@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Listbox, Transition } from '@headlessui/react';
 import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/solid';
 
+import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '../lib/styles';
+
 const links = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog' },
@@ -18,7 +20,8 @@ const Links = ({ pathname }) =>
           'px-3 py-2 rounded-md text-sm font-medium',
           link.path === pathname
             ? 'bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white'
-            : 'hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-300 dark:hover:text-white'
+            : 'hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-300 dark:hover:text-white',
+          GLOBAL_FOCUS_STYLES
         )}
       >
         {link.name}
@@ -37,7 +40,7 @@ const ThemeIcon = ({ theme, resolvedTheme }) => {
   }
 };
 
-const ThemeSwitcher = () => {
+const ThemeSelector = () => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, theme, setTheme } = useTheme();
   const options = [
@@ -63,7 +66,7 @@ const ThemeSwitcher = () => {
           className={clsx(
             'inline-flex items-center rounded-lg border border-transparent p-1.5',
             'text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white',
-            'focus:outline-none'
+            GLOBAL_FOCUS_STYLES
           )}
         >
           <ThemeIcon theme={theme} resolvedTheme={resolvedTheme} />
@@ -79,8 +82,8 @@ const ThemeSwitcher = () => {
           <Listbox.Options
             className={clsx(
               'absolute z-10 w-36 mt-4 py-1 top-full right-0 rounded-lg shadow-lg overflow-hidden',
-              'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300',
-              'ring-1 ring-gray-900/10 dark:ring-0'
+              'bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-300',
+              GLOBAL_FOCUS_STYLES
             )}
           >
             {options.map(option => (
@@ -89,7 +92,7 @@ const ThemeSwitcher = () => {
                   <li
                     className={clsx('py-1 px-2 flex items-center cursor-pointer text-small font-semibold', {
                       'text-sky-500': selected,
-                      'bg-gray-50 dark:bg-gray-600': active,
+                      'bg-gray-200 dark:bg-gray-600': active,
                     })}
                   >
                     {option.icon}
@@ -106,11 +109,16 @@ const ThemeSwitcher = () => {
 };
 
 const Header = ({ pathname }) => (
-  <header className='bg-white dark:bg-gray-800'>
+  <header className={GLOBAL_BACKGROUND_COLOR}>
     <div className='mx-auto max-w-7xl px-8'>
       <div className='py-6 flex justify-start items-center border-b border-gray-300 dark:border-gray-600 sm:border-none'>
         <Link href='/'>
-          <a className='group flex-grow text-2xl text-gray-900 dark:text-white tracking-wide font-medium sm:flex-none'>
+          <a
+            className={clsx(
+              'group flex-grow text-2xl text-gray-900 dark:text-white tracking-wide font-medium sm:flex-none',
+              GLOBAL_FOCUS_STYLES
+            )}
+          >
             Moster
             <span className='text-green-600 dark:text-green-400 transition ease-in-out duration-150 group-hover:text-sky-500'>
               &lt;dev/&gt;
@@ -120,7 +128,7 @@ const Header = ({ pathname }) => (
         <nav className='ml-4 flex-grow space-x-4 hidden sm:block'>
           <Links pathname={pathname} />
         </nav>
-        <ThemeSwitcher />
+        <ThemeSelector />
       </div>
       <nav className='py-4 flex flex-wrap justify-center space-x-4 sm:hidden'>
         <Links pathname={pathname} />
