@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://moster.dev/sitemap.xml

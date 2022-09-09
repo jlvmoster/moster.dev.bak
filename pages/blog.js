@@ -5,9 +5,9 @@ import { ArchiveBoxIcon } from '@heroicons/react/24/outline';
 
 import { getCurrentBlogPosts } from '../lib/api';
 import { getEstimatedReadingTime } from '../lib/utils';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import BlogCard from '../components/blog-card';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
+import BlogCard from '@/components/blog-card';
 
 const Blog = ({ router, posts, preview }) => (
   <>

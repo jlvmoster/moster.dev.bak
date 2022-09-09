@@ -1,10 +1,10 @@
 import { withRouter } from 'next/router';
 
-import { getArchivedBlogPosts } from '../lib/api';
-import { getEstimatedReadingTime } from '../lib/utils';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import BlogCard from '../components/blog-card';
+import { getArchivedBlogPosts } from '@/lib/api';
+import { getEstimatedReadingTime } from '@/lib/utils';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
+import BlogCard from '@/components/blog-card';
 
 const Archive = ({ router, posts, preview }) => (
   <>

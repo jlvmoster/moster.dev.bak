@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Listbox, Transition } from '@headlessui/react';
 import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/solid';
 
-import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '../lib/styles';
+import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '@/lib/styles';
 
 const links = [
   { name: 'Home', path: '/' },

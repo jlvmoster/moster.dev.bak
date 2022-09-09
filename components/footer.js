@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '../lib/styles';
+import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '@/lib/styles';
 
 const socials = [
   {

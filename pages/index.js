@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { withRouter } from 'next/router';
 
 import profilePic from '../public/me.png';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
 
 const Home = ({ router }) => (
   <>

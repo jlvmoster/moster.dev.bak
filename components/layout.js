@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { GLOBAL_BACKGROUND_COLOR } from '../lib/styles';
+import { GLOBAL_BACKGROUND_COLOR } from '@/lib/styles';
 import Alert from './alert';
 import Header from './header';
 import Footer from './footer';

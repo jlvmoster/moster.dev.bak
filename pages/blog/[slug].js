@@ -1,15 +1,14 @@
 import clsx from 'clsx';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { withRouter } from 'next/router';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 
-import { GLOBAL_FOCUS_STYLES } from '../../lib/styles';
-import { getAllBlogPostSlugs, getBlogPostBySlug } from '../../lib/api';
-import { getEstimatedReadingTime } from '../../lib/utils';
-import Layout from '../../components/layout';
-import SEO from '../../components/seo';
+import { GLOBAL_FOCUS_STYLES } from '@/lib/styles';
+import { getAllBlogPostSlugs, getBlogPostBySlug } from '@/lib/api';
+import { getEstimatedReadingTime } from '@/lib/utils';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
 
 const renderOptions = {
   renderNode: {
@@ -54,10 +53,10 @@ const renderOptions = {
   },
 };
 
-const BlogPost = ({ router, post, readingTime, preview }) => (
+const BlogPost = ({ post, readingTime, preview }) => (
   <>
-    <SEO title={post.fields.title} description={post.fields.excerpt} pathname={router.pathname} />
-    <Layout pathname={router.pathname} preview={preview}>
+    <SEO title={post.fields.title} description={post.fields.excerpt} pathname={`/blog/${post.fields.slug}`} />
+    <Layout pathname={`/blog/${post.fields.slug}`} preview={preview}>
       <div className='max-w-7xl mx-auto mt-8 mb-24 space-y-8 sm:space-y-12'>
         <section className='flex px-6'>
           <div className='mx-auto pt-12 pb-6 px-8'>
@@ -87,7 +86,7 @@ const BlogPost = ({ router, post, readingTime, preview }) => (
   </>
 );
 
-export default withRouter(BlogPost);
+export default BlogPost;
 
 export const getStaticProps = async ({ params, preview = false }) => {
   const post = (await getBlogPostBySlug(params.slug, preview)) ?? null;
