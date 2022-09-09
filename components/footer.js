@@ -25,8 +25,8 @@ const socials = [
 
 const Footer = () => (
   <footer className='bg-white dark:bg-gray-800'>
-    <div className='max-w-7xl mx-auto p-8 md:flex md:items-center md:justify-between'>
-      <div className='flex justify-center space-x-4 md:order-2'>
+    <div className='max-w-7xl mx-auto p-8'>
+      <div className='flex justify-center space-x-6'>
         {socials.map(social => (
           <a
             key={social.name}
@@ -40,7 +40,7 @@ const Footer = () => (
           </a>
         ))}
       </div>
-      <div className='mt-4 md:order-1 md:mt-0'>
+      <div className='mt-4 flex flex-col items-center justify-center sm:flex-row'>
         <p className='text-center text-base text-gray-400'>
           &copy; 2022{' '}
           <a
@@ -51,7 +51,7 @@ const Footer = () => (
           >
             Moster, Inc.
           </a>{' '}
-          Powered by{' '}
+          All rights reserved. <br className='sm:hidden' /> Powered by{' '}
           <a
             href='https://vercel.com'
             target='_blank'
