@@ -19,7 +19,7 @@ const renderOptions = {
     },
     [BLOCKS.TABLE]: (node, children) => (
       <div className='max-h-96 overflow-auto'>
-        <table className='not-prose w-full h-full m-0 table-auto border-collapse border-2 border-gray-100 dark:border-gray-900'>
+        <table className='not-prose relative w-full h-full m-0 table-auto border-separate border-spacing-0 border-2 border-gray-100 dark:border-gray-900'>
           <tbody>{children}</tbody>
         </table>
       </div>
@@ -28,7 +28,7 @@ const renderOptions = {
       <tr className='border-2 border-gray-100 dark:border-gray-900'>{children}</tr>
     ),
     [BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
-      <th className='p-4 bg-gray-100 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-900 whitespace-nowrap'>
+      <th className='sticky top-0 left-0 p-4 bg-gray-100 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-900 whitespace-nowrap'>
         {children}
       </th>
     ),
