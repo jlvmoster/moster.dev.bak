@@ -1,13 +1,13 @@
 import clsx from 'clsx';
-import { format } from 'date-fns';
 import Link from 'next/link';
-import Image from 'next/image';
 import { withRouter } from 'next/router';
+import { ArchiveBoxIcon } from '@heroicons/react/24/outline';
 
-import { getAllBlogPosts } from '../lib/api';
+import { getCurrentBlogPosts } from '../lib/api';
 import { getEstimatedReadingTime } from '../lib/utils';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '@/components/layout';
+import SEO from '@/components/seo';
+import BlogCard from '@/components/blog-card';
 
 const Blog = ({ router, posts, preview }) => (
   <>
@@ -21,33 +21,26 @@ const Blog = ({ router, posts, preview }) => (
             </h1>
           </div>
         </section>
-        <section className='mx-auto mb-24 px-6 grid gap-6 sm:grid-cols-2 sm:max-w-5xl'>
+        <section className='mx-auto px-6 grid gap-6 sm:grid-cols-2 sm:max-w-5xl'>
           {posts.map(post => (
-            <Link key={post.fields.slug} href={`/blog/${post.fields.slug}`}>
+            <BlogCard key={post.fields.slug} post={post} />
+          ))}
+        </section>
+        <section className='mt-16 py-16 px-3 sm:py-24 sm:px-6'>
+          <div className='px-3 text-center'>
+            <Link href='/archive'>
               <a
                 className={clsx(
-                  'flex flex-col overflow-hidden rounded-xl shadow-md dark:bg-gray-900',
-                  'transform ease-in-out duration-150 hover:scale-105 hover:shadow-lg'
+                  'px-6 py-3 inline-flex items-center rounded-md border border-transparent',
+                  'bg-blue-500 text-base font-medium text-white hover:bg-blue-600',
+                  'focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-800'
                 )}
               >
-                <div className='relative aspect-w-16 aspect-h-9'>
-                  <Image
-                    src={`https:${post.fields.heroImage.fields.file.url}`}
-                    layout='fill'
-                    alt={post.fields.heroImage.fields.title}
-                    priority
-                  />
-                </div>
-                <div className='p-6'>
-                  <h5 className='text-xl font-semibold text-gray-900 dark:text-gray-50'>{post.fields.title}</h5>
-                  <p className='text-sm text-base'>
-                    {format(new Date(post.fields.publishDate), 'LLL. d, yyyy')} &bull; {post.readingTime} min read
-                  </p>
-                  <p className='mt-3 text-base text-gray-500 dark:text-white'>{post.fields.excerpt}</p>
-                </div>
+                <ArchiveBoxIcon className='-ml-1 mr-3 h-5 w-5' aria-hidden='true' />
+                Archived Posts
               </a>
             </Link>
-          ))}
+          </div>
         </section>
       </div>
     </Layout>
@@ -57,7 +50,7 @@ const Blog = ({ router, posts, preview }) => (
 export default withRouter(Blog);
 
 export const getStaticProps = async ({ preview = false }) => {
-  const posts = (await getAllBlogPosts(preview)) ?? [];
+  const posts = (await getCurrentBlogPosts(preview)) ?? [];
   const enrichedPosts = posts.map(post => {
     post['readingTime'] = getEstimatedReadingTime(post);
     return post;

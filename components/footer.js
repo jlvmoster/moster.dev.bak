@@ -1,3 +1,6 @@
+import clsx from 'clsx';
+import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '@/lib/styles';
+
 const socials = [
   {
     name: 'Twitter',
@@ -24,7 +27,7 @@ const socials = [
 ];
 
 const Footer = () => (
-  <footer className='bg-white dark:bg-gray-800'>
+  <footer className={clsx(GLOBAL_BACKGROUND_COLOR)}>
     <div className='max-w-7xl mx-auto p-8'>
       <div className='flex justify-center space-x-6'>
         {socials.map(social => (
@@ -33,7 +36,7 @@ const Footer = () => (
             href={social.href}
             rel='noreferrer'
             target='_blank'
-            className='text-gray-400 hover:text-gray-500 dark:hover:text-gray-300'
+            className={clsx('text-gray-400 hover:text-gray-500 dark:hover:text-gray-300', GLOBAL_FOCUS_STYLES)}
           >
             <span className='sr-only'>{social.name}</span>
             <social.icon className='h-6 w-6' aria-hidden='true' />
@@ -47,7 +50,10 @@ const Footer = () => (
             href='https://mosterinc.com'
             target='_blank'
             rel='noreferrer'
-            className='transition ease-in-out duration-150 underline-offset-4 hover:underline hover:text-gray-500 dark:hover:text-gray-300'
+            className={clsx(
+              'transition ease-in-out duration-150 underline-offset-4 hover:underline hover:text-gray-500 dark:hover:text-gray-300',
+              GLOBAL_FOCUS_STYLES
+            )}
           >
             Moster, Inc.
           </a>{' '}
@@ -56,7 +62,10 @@ const Footer = () => (
             href='https://vercel.com'
             target='_blank'
             rel='noreferrer'
-            className='text-xl font-semibold transition ease-in-out duration-150 hover:text-gray-500 dark:hover:text-gray-300 hover:font-bold'
+            className={clsx(
+              'text-xl font-semibold transition ease-in-out duration-150 hover:text-gray-500 dark:hover:text-gray-300 hover:font-bold',
+              GLOBAL_FOCUS_STYLES
+            )}
           >
             Vercel
           </a>
