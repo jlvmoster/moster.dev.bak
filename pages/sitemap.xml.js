@@ -19,7 +19,7 @@ ${slugs.map(slug => `<url><loc>${`${WEBSITE_URL}/blog/${slug}`}</loc></url>`).jo
 
 const Sitemap = () => {};
 
-export const getServerSideProps = ({ res }) => {
+export const getServerSideProps = async ({ res }) => {
   const posts = (await getAllBlogPostSlugs()) ?? [];
   const slugs = posts.map(post => post.fields.slug);
   const sitemap = generateSitemap(slugs);
