@@ -10,16 +10,16 @@ const Archive = ({ router, posts, preview }) => (
   <>
     <SEO title='Archive' pathname={router.pathname} />
     <Layout pathname={router.pathname} preview={preview}>
-      <div className='max-w-3xl mx-auto sm:max-w-5xl lg:max-w-7xl'>
+      <div className='mx-auto max-w-3xl sm:max-w-5xl lg:max-w-7xl'>
         <section className='py-16 px-3 sm:py-24 sm:px-6'>
           <div className='px-3 text-center'>
-            <h1 className='text-4xl sm:text-5xl text-gray-900 dark:text-white font-semibold tracking-wider leading-tight'>
+            <h1 className='text-4xl font-semibold leading-tight tracking-wider text-gray-900 dark:text-white sm:text-5xl'>
               Archived Blogs
             </h1>
           </div>
         </section>
         {posts.length > 0 ? (
-          <section className='mx-auto mb-24 px-6 grid gap-6 sm:grid-cols-2 sm:max-w-5xl'>
+          <section className='mx-auto mb-24 grid gap-6 px-6 sm:max-w-5xl sm:grid-cols-2'>
             {posts.map(post => (
               <BlogCard key={post.fields.slug} post={post} />
             ))}
@@ -27,7 +27,7 @@ const Archive = ({ router, posts, preview }) => (
         ) : (
           <section className='py-16 px-3 sm:py-24 sm:px-6'>
             <div className='px-3 text-center'>
-              <h2 className='text-3xl sm:text-4xl text-gray-900 dark:text-white font-light tracking-wide leading-tight'>
+              <h2 className='text-3xl font-light leading-tight tracking-wide text-gray-900 dark:text-white sm:text-4xl'>
                 No blogs yet... <br className='sm:hidden' /> Check back later.
               </h2>
             </div>

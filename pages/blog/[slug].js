@@ -19,8 +19,8 @@ const renderOptions = {
       return <p>{children}</p>;
     },
     [BLOCKS.TABLE]: (node, children) => (
-      <div className='relative overflow-x-auto border-t-4 border-x-4 border-gray-100 dark:border-gray-900'>
-        <table className='not-prose w-full m-0 table-auto'>
+      <div className='relative overflow-x-auto border-x-4 border-t-4 border-gray-100 dark:border-gray-900'>
+        <table className='not-prose m-0 w-full table-auto'>
           <tbody>{children}</tbody>
         </table>
       </div>
@@ -29,16 +29,16 @@ const renderOptions = {
       <tr className='border-b-4 border-gray-100 dark:border-gray-900'>{children}</tr>
     ),
     [BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
-      <th className='sticky left-0 py-4 px-6 bg-gray-100 dark:bg-gray-900 whitespace-nowrap'>{children}</th>
+      <th className='sticky left-0 whitespace-nowrap bg-gray-100 py-4 px-6 dark:bg-gray-900'>{children}</th>
     ),
-    [BLOCKS.TABLE_CELL]: (node, children) => <td className='py-4 px-6 whitespace-nowrap'>{children}</td>,
+    [BLOCKS.TABLE_CELL]: (node, children) => <td className='whitespace-nowrap py-4 px-6'>{children}</td>,
     [INLINES.HYPERLINK]: (node, children) => (
       <a
         href={node.data.uri}
         target='_blank'
         rel='noreferrer'
         className={clsx(
-          'text-sky-600 dark:text-sky-500 transition ease-in-out duration-150 no-underline underline-offset-4 hover:underline hover:text-sky-500 dark:hover:text-sky-400',
+          'text-sky-600 no-underline underline-offset-4 transition duration-150 ease-in-out hover:text-sky-500 hover:underline dark:text-sky-500 dark:hover:text-sky-400',
           GLOBAL_FOCUS_STYLES
         )}
       >
@@ -46,7 +46,7 @@ const renderOptions = {
       </a>
     ),
     [BLOCKS.EMBEDDED_ASSET]: node => (
-      <div className='relative mx-auto aspect-w-16 aspect-h-9'>
+      <div className='aspect-w-16 aspect-h-9 relative mx-auto'>
         <Image src={`https:${node.data.target.fields.file.url}`} layout='fill' alt={node.data.target.fields.title} />
       </div>
     ),
@@ -57,18 +57,18 @@ const BlogPost = ({ post, readingTime, preview }) => (
   <>
     <SEO title={post.fields.title} description={post.fields.excerpt} pathname={`/blog/${post.fields.slug}`} />
     <Layout pathname={`/blog/${post.fields.slug}`} preview={preview}>
-      <div className='max-w-7xl mx-auto mt-8 mb-24 space-y-8 sm:space-y-12'>
+      <div className='mx-auto mt-8 mb-24 max-w-7xl space-y-8 sm:space-y-12'>
         <section className='flex px-6'>
-          <div className='mx-auto pt-12 pb-6 px-8'>
+          <div className='mx-auto px-8 pt-12 pb-6'>
             <h1 className='font-mono text-5xl tracking-wide sm:text-7xl md:text-8xl'>{post.fields.title}</h1>
-            <p className='font-medium text-xs sm:text-sm'>
+            <p className='text-xs font-medium sm:text-sm'>
               {format(new Date(post.fields.publishDate), 'EEEE, LLLL do yyyy')} &bull; {readingTime} min read
             </p>
             <div className='my-3 border-b-2 border-dotted md:border-b-4' />
-            <h4 className='font-semibold text-sm sm:text-base'>{post.fields.excerpt}</h4>
+            <h4 className='text-sm font-semibold sm:text-base'>{post.fields.excerpt}</h4>
           </div>
         </section>
-        <div className='relative mx-auto aspect-w-16 aspect-h-9'>
+        <div className='aspect-w-16 aspect-h-9 relative mx-auto'>
           <Image
             src={`https:${post.fields.heroImage.fields.file.url}`}
             layout='fill'
@@ -77,7 +77,7 @@ const BlogPost = ({ post, readingTime, preview }) => (
           />
         </div>
         <section className='px-6'>
-          <article className='max-w-5xl mx-auto prose dark:prose-invert sm:prose-lg lg:prose-xl'>
+          <article className='prose mx-auto max-w-5xl dark:prose-invert sm:prose-lg lg:prose-xl'>
             {documentToReactComponents(post.fields.content, renderOptions)}
           </article>
         </section>

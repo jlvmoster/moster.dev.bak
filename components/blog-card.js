@@ -8,11 +8,11 @@ const BlogCard = ({ post }) => (
     <a
       className={clsx(
         'flex flex-col overflow-hidden rounded-xl shadow-md dark:bg-gray-900',
-        'transform ease-in-out duration-150 hover:scale-105 hover:shadow-lg',
+        'transform duration-150 ease-in-out hover:scale-105 hover:shadow-lg',
         'focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-800'
       )}
     >
-      <div className='relative aspect-w-16 aspect-h-9'>
+      <div className='aspect-w-16 aspect-h-9 relative'>
         <Image
           src={`https:${post.fields.heroImage.fields.file.url}`}
           layout='fill'
