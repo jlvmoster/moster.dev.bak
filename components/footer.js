@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '@/lib/styles';
+import { GLOBAL_BACKGROUND_COLOR } from '@/lib/styles';
 
 const socials = [
   {
@@ -36,7 +36,7 @@ const Footer = () => (
             href={social.href}
             rel='noreferrer'
             target='_blank'
-            className={clsx('text-gray-400 hover:text-gray-500 dark:hover:text-gray-300', GLOBAL_FOCUS_STYLES)}
+            className='text-gray-400 hover:text-gray-500 dark:hover:text-gray-300'
           >
             <span className='sr-only'>{social.name}</span>
             <social.icon className='h-6 w-6' aria-hidden='true' />
@@ -50,10 +50,7 @@ const Footer = () => (
             href='https://mosterinc.com'
             target='_blank'
             rel='noreferrer'
-            className={clsx(
-              'transition ease-in-out duration-150 underline-offset-4 hover:underline hover:text-gray-500 dark:hover:text-gray-300',
-              GLOBAL_FOCUS_STYLES
-            )}
+            className='transition ease-in-out duration-150 underline-offset-4 hover:underline hover:text-gray-500 dark:hover:text-gray-300'
           >
             Moster, Inc.
           </a>{' '}
@@ -62,10 +59,7 @@ const Footer = () => (
             href='https://vercel.com'
             target='_blank'
             rel='noreferrer'
-            className={clsx(
-              'text-xl font-semibold transition ease-in-out duration-150 hover:text-gray-500 dark:hover:text-gray-300 hover:font-bold',
-              GLOBAL_FOCUS_STYLES
-            )}
+            className='text-xl font-semibold transition ease-in-out duration-150 hover:text-gray-500 dark:hover:text-gray-300 hover:font-bold'
           >
             Vercel
           </a>

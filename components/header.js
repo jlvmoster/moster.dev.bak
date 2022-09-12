@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Listbox, Transition } from '@headlessui/react';
 import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/solid';
 
-import { GLOBAL_BACKGROUND_COLOR, GLOBAL_FOCUS_STYLES } from '@/lib/styles';
+import { GLOBAL_BACKGROUND_COLOR } from '@/lib/styles';
 
 const links = [
   { name: 'Home', path: '/' },
@@ -20,8 +20,7 @@ const Links = ({ pathname }) =>
           'px-3 py-2 rounded-md text-sm font-medium',
           link.path === pathname
             ? 'bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white'
-            : 'hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-300 dark:hover:text-white',
-          GLOBAL_FOCUS_STYLES
+            : 'hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-300 dark:hover:text-white'
         )}
       >
         {link.name}
@@ -65,8 +64,7 @@ const ThemeSelector = () => {
         <Listbox.Button
           className={clsx(
             'inline-flex items-center rounded-lg border border-transparent p-1.5',
-            'text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white',
-            GLOBAL_FOCUS_STYLES
+            'text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
           )}
         >
           <ThemeIcon theme={theme} resolvedTheme={resolvedTheme} />
@@ -82,8 +80,7 @@ const ThemeSelector = () => {
           <Listbox.Options
             className={clsx(
               'absolute z-10 w-36 mt-4 py-1 top-full right-0 rounded-lg shadow-lg overflow-hidden',
-              'bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-300',
-              GLOBAL_FOCUS_STYLES
+              'bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-300'
             )}
           >
             {options.map(option => (
@@ -113,12 +110,7 @@ const Header = ({ pathname }) => (
     <div className='mx-auto max-w-7xl px-8'>
       <div className='py-6 flex justify-start items-center border-b border-gray-300 dark:border-gray-600 sm:border-none'>
         <Link href='/'>
-          <a
-            className={clsx(
-              'group flex-grow text-2xl text-gray-900 dark:text-white tracking-wide font-medium sm:flex-none',
-              GLOBAL_FOCUS_STYLES
-            )}
-          >
+          <a className='group flex-grow text-2xl text-gray-900 dark:text-white tracking-wide font-medium sm:flex-none'>
             Moster
             <span className='text-green-600 dark:text-green-400 transition ease-in-out duration-150 group-hover:text-sky-500'>
               &lt;dev/&gt;
